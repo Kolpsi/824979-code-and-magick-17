@@ -56,6 +56,6 @@ window.renderStatistics = function (ctx, names, times) {
   for (i = 0; i < times.length; i++) {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.fillStyle = '#000';
-    ctx.fillText(Math.round(times[i]), CLOUD_X + GAP + (GAP + BAR_WIDTH) * i, 270 - (HISTOGRAMS_HEIGHT * times[i]) / maxTime - 40);
+    ctx.fillText(Math.round(times[i]), CLOUD_X + GAP + (GAP + BAR_WIDTH) * i, CLOUD_HEIGHT - (HISTOGRAMS_HEIGHT * times[i]) / maxTime - 40);
   }
 };
