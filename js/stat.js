@@ -46,17 +46,16 @@ window.renderStatistics = function (ctx, names, times) {
     var randomColor = 'hsl(228, 100%, ' + Math.floor(Math.random() * 21 + 60) + '%)';
     ctx.setTransform(1, 0, 0, -1, 0, 270);
     if (names[i] === 'Вы') {
-      ctx.fillStyle = '#000';
+      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
       ctx.fillStyle = randomColor;
     }
-    ctx.fillRect(CLOUD_X + GAP + (GAP + BAR_WIDTH) * i, 30, BAR_WIDTH, (HISTOGRAMS_HEIGHT * times[i]) / maxTime );
+    ctx.fillRect(CLOUD_X + GAP + (GAP + BAR_WIDTH) * i, 30, BAR_WIDTH, (HISTOGRAMS_HEIGHT * times[i]) / maxTime);
   }
 
   for (i = 0; i < times.length; i++) {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.fillStyle = '#000';
-    ctx.fillText(Math.round(times[i]), CLOUD_X + GAP + (GAP + BAR_WIDTH) * i, 270 - (HISTOGRAMS_HEIGHT * times[i]) / maxTime  - 50);
-
+    ctx.fillText(Math.round(times[i]), CLOUD_X + GAP + (GAP + BAR_WIDTH) * i, 270 - (HISTOGRAMS_HEIGHT * times[i]) / maxTime - 40);
   }
 };
