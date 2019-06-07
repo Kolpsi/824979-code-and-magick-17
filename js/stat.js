@@ -4,13 +4,13 @@ var CLOUD_WIDTH = 420;
 var CLOUD_HEIGHT = 270;
 var CLOUD_X = 80;
 var CLOUD_Y = 40;
-var GAP = 50;
+var BAR_GAP_X = 50;
 var FONT_GAP = 20;
 var BAR_WIDTH = 40;
 var TEXT_Y = 260;
 var HISTOGRAMS_HEIGHT = 150;
 var BAR_Y = 30;
-var BAR_GAP = 40;
+var BAR_GAP_Y = 40;
 var TITLE_POSITION_X = CLOUD_X + FONT_GAP * 2;
 
 var renderCloud = function (ctx, x, y, color) {
@@ -43,7 +43,7 @@ window.renderStatistics = function (ctx, names, times) {
   for (var i = 0; i < times.length; i++) {
     var randomColor = 'hsl(228, 100%, ' + Math.floor(Math.random() * 21 + 60) + '%)';
     var barHeight = (HISTOGRAMS_HEIGHT * times[i]) / maxTime;
-    var TEXT_POSITION_X = CLOUD_X + GAP + (GAP + BAR_WIDTH) * i;
+    var histogramItemPositionX = CLOUD_X + BAR_GAP_X + (BAR_GAP_X + BAR_WIDTH) * i;
 
     ctx.setTransform(1, 0, 0, -1, 0, 270);
     if (names[i] === 'Вы') {
@@ -51,10 +51,10 @@ window.renderStatistics = function (ctx, names, times) {
     } else {
       ctx.fillStyle = randomColor;
     }
-    ctx.fillRect(TEXT_POSITION_X, BAR_Y, BAR_WIDTH, barHeight);
+    ctx.fillRect(histogramItemPositionX, BAR_Y, BAR_WIDTH, barHeight);
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.fillStyle = '#000';
-    ctx.fillText(Math.round(times[i]), TEXT_POSITION_X, CLOUD_HEIGHT - barHeight - BAR_GAP);
-    ctx.fillText(names[i], TEXT_POSITION_X, TEXT_Y);
+    ctx.fillText(Math.round(times[i]), histogramItemPositionX, CLOUD_HEIGHT - barHeight - BAR_GAP_Y);
+    ctx.fillText(names[i], histogramItemPositionX, TEXT_Y);
   }
 };
