@@ -16,12 +16,13 @@ var coatColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)
 var eyesColors = ['black', ' red', 'blue', 'yellow', 'green'];
 
 function shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
+  for (var i = array.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array[i];
 }
 
 shuffleArray(wizardNames);
@@ -29,43 +30,29 @@ shuffleArray(wizardSecondNames);
 shuffleArray(coatColors);
 shuffleArray(eyesColors);
 
-var wizards = [
-  {
-    name: wizardNames[0] + wizardSecondNames[0],
-    coatColor: coatColors[0],
-    eyeColors: eyesColors[0]
-  },
-  {
-    name: wizardNames[1] + wizardSecondNames[1],
-    coatColor: coatColors[1],
-    eyeColors: eyesColors[1]
-  },
-  {
-    name: wizardNames[2] + wizardSecondNames[2],
-    coatColor: coatColors[2],
-    eyeColors: eyesColors[2]
-  },
-  {
-    name: wizardNames[3] + wizardSecondNames[3],
-    coatColor: coatColors[3],
-    eyeColors: eyesColors[3]
-  }
-];
+var createWizard = function () {
+  return {
+    name: shuffleArray(wizardNames) + shuffleArray(wizardSecondNames),
+    coatColor: shuffleArray(coatColors),
+    eyeColors: shuffleArray(eyesColors)
+  };
+};
 
-var renderWizard = function (wizard) {
+var renderWizard = function () {
   var wizardElement = setupSimiliarWizardTemplate.cloneNode(true);
 
-  wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
-  wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
-  wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyeColors;
+  wizardElement.querySelector('.setup-similar-label').textContent = createWizard().name;
+  wizardElement.querySelector('.wizard-coat').style.fill = createWizard().coatColor;
+  wizardElement.querySelector('.wizard-eyes').style.fill = createWizard().eyeColors;
 
   return wizardElement;
 };
 
 var fragment = document.createDocumentFragment();
 
-for (var i = 0; i < wizards.length; i++) {
-  fragment.appendChild(renderWizard(wizards[i]));
+for (var i = 0; i < 4; i++) {
+  fragment.appendChild(renderWizard());
 }
 
 setupSimiliarCharactersList.appendChild(fragment);
+
