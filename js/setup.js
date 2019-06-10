@@ -25,11 +25,6 @@ function shuffleArray(array) {
   return array[i];
 }
 
-shuffleArray(wizardNames);
-shuffleArray(wizardSecondNames);
-shuffleArray(coatColors);
-shuffleArray(eyesColors);
-
 var createWizard = function () {
   return {
     name: shuffleArray(wizardNames) + shuffleArray(wizardSecondNames),
