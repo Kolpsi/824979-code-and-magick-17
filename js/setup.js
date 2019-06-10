@@ -19,10 +19,10 @@ function random() {
   return Math.random() - 0.5;
 }
 
-wizardNames.sort(compareRandom);
-wizardSecondNames.sort(compareRandom);
-coatColors.sort(compareRandom);
-eyesColors.sort(compareRandom);
+wizardNames.sort(random);
+wizardSecondNames.sort(random);
+coatColors.sort(random);
+eyesColors.sort(random);
 
 var wizards = [
   {
