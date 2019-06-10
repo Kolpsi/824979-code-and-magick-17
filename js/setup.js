@@ -6,9 +6,9 @@ var setupSimiliarCharactersList = document.querySelector('.setup-similar-list');
 var setupSimiliarWizardTemplate = document.querySelector('#similar-wizard-template')
   .content
   .querySelector('.setup-similar-item');
+
 setupPopup.classList.remove('hidden');
 setupSimiliarCharacters.classList.remove('hidden');
-
 
 var wizardNames = ['Иван ', 'Хуан Себастьян ', 'Мария ', 'Кристоф ', 'Виктор ', 'Юлия ', 'Люпита ', 'Вашингтон '];
 var wizardSecondNames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
