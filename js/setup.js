@@ -15,21 +15,16 @@ var wizardSecondNames = ['да Марья', 'Верон', 'Мирабелла', 
 var coatColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var eyesColors = ['black', ' red', 'blue', 'yellow', 'green'];
 
-var shuffleArray = function (array) {
-  for (var i = array.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
-  return array[i];
+var gerRandomElem = function (array) {
+  var index = Math.floor(Math.random() * array.length);
+  return array[index];
 };
 
 var createWizard = function () {
   return {
-    name: shuffleArray(wizardNames) + shuffleArray(wizardSecondNames),
-    coatColor: shuffleArray(coatColors),
-    eyeColors: shuffleArray(eyesColors)
+    name: gerRandomElem(wizardNames) + gerRandomElem(wizardSecondNames),
+    coatColor: gerRandomElem(coatColors),
+    eyeColors: gerRandomElem(eyesColors)
   };
 };
 
